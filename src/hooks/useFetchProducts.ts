@@ -11,17 +11,16 @@ const useFetchProducts = (searchValue: string) => {
         try {
             const result = await fetch(PRODUCTS_URL)
             const response = await result.json()
-            setTimeout(() => {
-                setFilteredProducts(
-                    response?.products.filter(
-                        (product: TProduct) =>
-                            product.title
-                                .toLowerCase()
-                                .indexOf(searchValue.toLowerCase()) >= 0
-                    )
-                );
-                setIsLoading(false)
-            }, 3000)
+            //filter should be run with api filter ideally
+            setFilteredProducts(
+                response?.products.filter(
+                    (product: TProduct) =>
+                        product.title
+                            .toLowerCase()
+                            .indexOf(searchValue.toLowerCase()) >= 0
+                )
+            )
+            setIsLoading(false)
         } catch (error) {
             console.log('error')
             setIsLoading(false)

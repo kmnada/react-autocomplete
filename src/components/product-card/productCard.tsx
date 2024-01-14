@@ -15,13 +15,16 @@ const ProductCard = ({
     const startIndex = product.title
         .toLowerCase()
         .indexOf(searchValue.toLowerCase())
-    const title = startIndex >= 0 ? (
-        <span>
-            {product.title.substring(0, startIndex)}
-            <span className="product-card__highlighted">{searchValue}</span>
-            {product.title.substring(startIndex + searchValue.length)}
-        </span>
-    ): product.title;
+    const title =
+        startIndex >= 0 ? (
+            <span>
+                {product.title.substring(0, startIndex)}
+                <span className="product-card__highlighted">{searchValue}</span>
+                {product.title.substring(startIndex + searchValue.length)}
+            </span>
+        ) : (
+            product.title
+        )
 
     return (
         <div className="product-card-wrapper" onClick={onSelect}>
